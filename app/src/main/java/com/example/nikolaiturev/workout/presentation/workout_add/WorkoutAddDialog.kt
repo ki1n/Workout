@@ -14,7 +14,7 @@ class WorkoutAddDialog : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_workout_dialog, container, false)
+        return inflater.inflate(R.layout.fragment_workout_bottom_sheet, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
