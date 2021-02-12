@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtIdWorkout"
+        android:layout_width="32dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/teal_700"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtWorkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Название заметки"
+        android:textColor="@color/teal_700"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtDateCreateWorkout"
+        app:layout_constraintStart_toEndOf="@+id/txtIdWorkout"
+        app:layout_constraintTop_toTopOf="@+id/txtIdWorkout" />
+
+    <TextView
+        android:id="@+id/txtDateCreateWorkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="data"
+        app:layout_constraintBottom_toBottomOf="@+id/txtIdWorkout"
+        app:layout_constraintStart_toStartOf="@+id/txtWorkout"
+        app:layout_constraintTop_toBottomOf="@+id/txtWorkout" />
+</androidx.constraintlayout.widget.ConstraintLayout>
