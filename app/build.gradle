@@ -10,6 +10,7 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+  //  kapt.includeCompileClasspath = false
 
     defaultConfig {
         applicationId "com.example.nikolaiturev.workout"
@@ -56,6 +57,8 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:2.2.2"
     implementation "org.koin:koin-androidx-ext:2.0.1"
 
+  //  implementation "org.koin:koin-android-architecture:2.2.2"
+
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -88,4 +91,5 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
+
 }
