@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtWorkout"
+        android:id="@+id/txtNameWorkout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,6 +48,6 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtIdWorkout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/txtWorkout"
-        app:layout_constraintTop_toBottomOf="@+id/txtWorkout" />
+        app:layout_constraintStart_toStartOf="@+id/txtNameWorkout"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameWorkout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

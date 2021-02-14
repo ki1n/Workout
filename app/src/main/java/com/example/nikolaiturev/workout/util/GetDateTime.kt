@@ -3,7 +3,6 @@ package com.example.nikolaiturev.workout.util
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 fun getDateTime(): String {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.getDefault())
     return dateFormat.format(Calendar.getInstance().time)
