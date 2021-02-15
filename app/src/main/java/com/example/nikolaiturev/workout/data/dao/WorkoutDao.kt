@@ -4,15 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.nikolaiturev.workout.domain.entity.Workout
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Flowable
 
 @Dao
 interface WorkoutDao {
     @Query("SELECT * FROM Workout ORDER BY id DESC")
     fun getAllLiveDate(): LiveData<List<Workout>>
 
-    @Query("SELECT * FROM Workout")
-    fun getWorkouts(): Single<List<Workout>>
+    @Query("SELECT * FROM Workout ORDER BY id")
+    fun getWorkouts(): Flowable<List<Workout>>
 
     @Query("SELECT * FROM Workout WHERE id = :id")
     fun getWorkout(id: Long): Workout

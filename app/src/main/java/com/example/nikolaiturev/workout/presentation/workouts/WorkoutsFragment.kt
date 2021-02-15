@@ -2,7 +2,6 @@ package com.example.nikolaiturev.workout.presentation.workouts
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolaiturev.workout.R
-import com.example.nikolaiturev.workout.domain.entity.Workout
 import com.example.nikolaiturev.workout.presentation.base.BaseFragment
 import com.example.nikolaiturev.workout.presentation.workout_add.WorkoutAddDialog
 import com.example.nikolaiturev.workout.presentation.workouts.adapter.WorkoutsAdapter
@@ -22,7 +21,7 @@ class WorkoutsFragment : BaseFragment() {
         initAdapter()
 
         viewModel.workoutLiveData.observe(viewLifecycleOwner, { list ->
-            workoutsAdapter.updateWorkout(list as MutableList<Workout>)
+            workoutsAdapter.updateWorkout(list)
         })
 
         app_bar_addWorkout.setOnClickListener {

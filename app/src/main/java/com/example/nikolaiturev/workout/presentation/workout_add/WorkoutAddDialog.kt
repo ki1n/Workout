@@ -2,7 +2,6 @@ package com.example.nikolaiturev.workout.presentation.workout_add
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,6 @@ import org.koin.android.ext.android.inject
 class WorkoutAddDialog : BottomSheetDialogFragment() {
 
     private val workoutDao: WorkoutDao by inject()
-    private val viewModel by inject<WorkoutAddViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +34,6 @@ class WorkoutAddDialog : BottomSheetDialogFragment() {
         btSaveWorkout.setOnClickListener {
             insertDataToDatabase()
         }
-
     }
 
     private fun insertDataToDatabase() {
@@ -51,7 +48,6 @@ class WorkoutAddDialog : BottomSheetDialogFragment() {
                 .subscribe()
 
             Toast.makeText(requireContext(), "Добавлено!", Toast.LENGTH_LONG).show()
-            Log.e("log","$workoutDao")
             dismiss()
         } else {
             Toast.makeText(requireContext(), "Введите поле", Toast.LENGTH_LONG).show()

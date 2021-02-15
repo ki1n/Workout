@@ -16,8 +16,10 @@ abstract class BaseFragment : Fragment() {
 
     private fun getBaseActivity(): BaseActivity = activity as BaseActivity
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(layoutId, container, false)
     }
 
@@ -27,7 +29,7 @@ abstract class BaseFragment : Fragment() {
         bindViewModel()
     }
 
-    private fun bindViewModel(){
+    private fun bindViewModel() {
 
         viewModel?.isInProgress?.observe(viewLifecycleOwner, { isInProgress ->
             if (isInProgress) {

@@ -17,11 +17,11 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
     private fun getWorkout() {
         disposable {
             workoutRepository.getAllWorkout()
-                .doOnSubscribe { isInProgress.value = true }
-                .doFinally { isInProgress.value = false }
+                .doOnSubscribe { isInProgress.value = false }
+                .doFinally { isInProgress.value = true }
                 .subscribe({
                     workoutLiveData.value = it
-                    Log.e("Log", "$it")
+                    Log.d("Log", "$it")
                 }, {
                     postMessage(it.localizedMessage)
                 })

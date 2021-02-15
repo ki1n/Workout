@@ -7,7 +7,7 @@ import com.example.nikolaiturev.workout.domain.entity.Workout
 import com.example.nikolaiturev.workout.exstension.inflate
 
 class WorkoutsAdapter : RecyclerView.Adapter<WorkoutsViewHolder>(){
-    private var workouts = mutableListOf<Workout>()
+    private var workouts: List<Workout> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutsViewHolder {
        return WorkoutsViewHolder(parent.inflate(R.layout.item_workout))
@@ -20,8 +20,8 @@ class WorkoutsAdapter : RecyclerView.Adapter<WorkoutsViewHolder>(){
 
     override fun getItemCount(): Int = workouts.size
 
-    fun updateWorkout(list: MutableList<Workout>) {
-        workouts.addAll(list)
+    fun updateWorkout(list: List<Workout>) {
+        workouts = list
         notifyDataSetChanged()
     }
 }

@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nikolaiturev.workout.R
 import com.example.nikolaiturev.workout.domain.entity.Workout
+import com.example.nikolaiturev.workout.util.dateTimeConverter
 
 class WorkoutsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -15,6 +16,6 @@ class WorkoutsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(workout: Workout) {
         id.text = workout.id.toString()
         name.text = workout.name
-        date.text = workout.date
+        date.text = dateTimeConverter(workout.date)
     }
 }
