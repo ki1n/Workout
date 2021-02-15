@@ -1,12 +1,17 @@
 package com.example.nikolaiturev.workout.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.example.nikolaiturev.workout.domain.entity.Workout
+import io.reactivex.Completable
 import io.reactivex.Flowable
 
 interface WorkoutRepository {
 
-    fun getAllWorkout() : Flowable<List<Workout>>
+    fun getAllWorkout(): Flowable<List<Workout>>
 
-    fun getAllLiveDate(): LiveData<List<Workout>>
+    fun insert(workout: Workout): Completable
+
+    fun delete(workout: Workout): Completable
+
+    fun update(workout: Workout): Completable
+
 }

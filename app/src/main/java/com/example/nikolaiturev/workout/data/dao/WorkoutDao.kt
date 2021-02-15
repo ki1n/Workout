@@ -8,7 +8,7 @@ import io.reactivex.Flowable
 
 @Dao
 interface WorkoutDao {
-    @Query("SELECT * FROM Workout ORDER BY id DESC")
+    @Query("SELECT * FROM Workout ORDER BY id")
     fun getAllLiveDate(): LiveData<List<Workout>>
 
     @Query("SELECT * FROM Workout ORDER BY id")
@@ -27,12 +27,12 @@ interface WorkoutDao {
 //        if (workout.id == 0L) insert(workout) else updateNameById(workout.id, workout.name)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertWorkout(workout: Workout) : Completable
+    fun insert(workout: Workout) : Completable
 
     @Update
-    fun update(workout: Workout)
+    fun update(workout: Workout) : Completable
 
     @Delete
-    fun delete(workout: Workout)
+    fun delete(workout: Workout) : Completable
 
 }

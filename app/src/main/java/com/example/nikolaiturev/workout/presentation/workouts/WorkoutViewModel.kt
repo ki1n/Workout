@@ -28,4 +28,19 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
         }
     }
 
+    fun update(workout: Workout) {
+        workoutRepository.update(workout)
+            .subscribe()
+    }
+
+    fun delete(workout: Workout) {
+        workoutRepository.delete(workout)
+            .subscribe()
+    }
+
+    fun insert(workout: Workout){
+        workoutRepository.insert(workout)
+            .subscribe()
+    }
+
 }

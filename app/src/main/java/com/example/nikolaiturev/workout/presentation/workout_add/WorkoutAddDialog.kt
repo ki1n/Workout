@@ -9,16 +9,16 @@ import android.widget.Toast
 import com.example.nikolaiturev.workout.R
 import com.example.nikolaiturev.workout.data.dao.WorkoutDao
 import com.example.nikolaiturev.workout.domain.entity.Workout
+import com.example.nikolaiturev.workout.presentation.workouts.WorkoutViewModel
 import com.example.nikolaiturev.workout.util.getDateTime
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_workout_bottom_sheet.*
 import org.koin.android.ext.android.inject
 
 class WorkoutAddDialog : BottomSheetDialogFragment() {
 
     private val workoutDao: WorkoutDao by inject()
+    private val viewModel by inject<WorkoutViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,11 +42,13 @@ class WorkoutAddDialog : BottomSheetDialogFragment() {
 
         if (inputCheck(name)) {
             val workout = Workout(0, name, date)
-            workoutDao.insertWorkout(workout)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
+            viewModel.insert(workout)
+//            workoutDao.insert(workout)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe()
 
+          //  etNameWorkout.text = null
             Toast.makeText(requireContext(), "Добавлено!", Toast.LENGTH_LONG).show()
             dismiss()
         } else {

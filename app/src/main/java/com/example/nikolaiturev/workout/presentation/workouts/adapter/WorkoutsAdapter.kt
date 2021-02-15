@@ -6,11 +6,11 @@ import com.example.nikolaiturev.workout.R
 import com.example.nikolaiturev.workout.domain.entity.Workout
 import com.example.nikolaiturev.workout.exstension.inflate
 
-class WorkoutsAdapter : RecyclerView.Adapter<WorkoutsViewHolder>(){
+class WorkoutsAdapter : RecyclerView.Adapter<WorkoutsViewHolder>() {
     private var workouts: List<Workout> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutsViewHolder {
-       return WorkoutsViewHolder(parent.inflate(R.layout.item_workout))
+        return WorkoutsViewHolder(parent.inflate(R.layout.item_workout))
     }
 
     override fun onBindViewHolder(holder: WorkoutsViewHolder, position: Int) {
@@ -19,6 +19,10 @@ class WorkoutsAdapter : RecyclerView.Adapter<WorkoutsViewHolder>(){
     }
 
     override fun getItemCount(): Int = workouts.size
+
+    fun getWorkoutPosition(position: Int): Workout {
+        return workouts[position]
+    }
 
     fun updateWorkout(list: List<Workout>) {
         workouts = list
