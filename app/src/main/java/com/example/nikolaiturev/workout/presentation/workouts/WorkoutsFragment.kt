@@ -6,8 +6,8 @@ import com.example.nikolaiturev.workout.R
 import com.example.nikolaiturev.workout.exstension.setOnDebouncedClickListener
 import com.example.nikolaiturev.workout.presentation.base.BaseFragment
 import com.example.nikolaiturev.workout.presentation.workouts.adapter.WorkoutsAdapter
-import kotlinx.android.synthetic.main.app_bar_add.*
-import kotlinx.android.synthetic.main.fragments_workouts.*
+import kotlinx.android.synthetic.main.app_bar_workouts.*
+import kotlinx.android.synthetic.main.fragment_workouts.*
 import org.koin.android.ext.android.inject
 
 class WorkoutsFragment : BaseFragment() {
@@ -24,7 +24,7 @@ class WorkoutsFragment : BaseFragment() {
             workoutsAdapter.submitList(list)
         })
 
-        app_bar_addWorkout.setOnDebouncedClickListener {
+        app_bar_add_workout.setOnDebouncedClickListener {
             findNavController().navigate(R.id.action_workoutsFragment_to_workoutAddDialog)
         }
     }
@@ -34,7 +34,7 @@ class WorkoutsFragment : BaseFragment() {
         rvWorkouts.layoutManager = LinearLayoutManager(requireContext())
 
         workoutsAdapter.onClickListener = { workout ->
-            // TODO: go to screen
+            findNavController().navigate(R.id.action_workoutsFragment_to_workoutDetailsFragment)
         }
 
         workoutsAdapter.onEditClickListener = { workout ->

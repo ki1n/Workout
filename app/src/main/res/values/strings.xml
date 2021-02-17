@@ -4,4 +4,7 @@
     <string name="название_тренировки">Название тренировки</string>
     <string name="сохранить">Сохранить</string>
     <string name="редактирование_тренировки">Редактирование тренировки</string>
+    <string name="подходы">Подходы</string>
+    <string name="подходы_в_упражнении">Подходы в упражнении</string>
+    <string name="тренировки">Тренировки</string>
 </resources>

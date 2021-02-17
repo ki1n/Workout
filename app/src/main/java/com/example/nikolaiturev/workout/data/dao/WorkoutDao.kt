@@ -5,6 +5,7 @@ import androidx.room.*
 import com.example.nikolaiturev.workout.domain.entity.Workout
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface WorkoutDao {
@@ -15,7 +16,7 @@ interface WorkoutDao {
     fun getWorkouts(): Flowable<List<Workout>>
 
     @Query("SELECT * FROM Workout WHERE id = :id")
-    fun getWorkout(id: Long): Workout
+    fun getWorkout(id: Long): Single<Workout>
 
     @Query("DELETE FROM Workout WHERE id = :id")
     fun deleteById(id: Long)

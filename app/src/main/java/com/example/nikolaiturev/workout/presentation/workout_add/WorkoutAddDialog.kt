@@ -17,7 +17,7 @@ class WorkoutAddDialog : BaseBottomSheetFragment() {
     override var layoutId: Int = R.layout.fragment_workout_add_bottom_sheet
 
     override fun initView() {
-        btSaveAddWorkout.setOnDebouncedClickListener {
+        btSaveAddExercise.setOnDebouncedClickListener {
             if (inputCheckEditText(etNameAddWorkout.text.toString())) {
                 val workout = Workout(0, etNameAddWorkout.text.toString(), getDateTime())
                 viewModel.insert(workout)

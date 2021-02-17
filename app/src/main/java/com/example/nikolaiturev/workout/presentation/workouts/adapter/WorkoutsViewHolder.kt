@@ -13,8 +13,8 @@ import com.example.nikolaiturev.workout.utils.dateTimeConverter
 class WorkoutsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val id: TextView = view.findViewById(R.id.txtIdWorkout)
-    val name: TextView = view.findViewById(R.id.txtNameWorkout)
-    val date: TextView = view.findViewById(R.id.txtDateCreateWorkout)
+    val name: TextView = view.findViewById(R.id.tvNameExercise)
+    val date: TextView = view.findViewById(R.id.tvApproaches)
     val imageDelete: ImageView = view.findViewById(R.id.image_delete)
     val imageEdit: ImageView = view.findViewById(R.id.image_edit)
     val swipe_layout: SwipeLayout = view.findViewById(R.id.swipe_layout)
