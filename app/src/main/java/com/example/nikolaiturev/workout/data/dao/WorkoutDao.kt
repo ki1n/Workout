@@ -21,7 +21,7 @@ interface WorkoutDao {
     fun deleteById(id: Long)
 
     @Query("UPDATE Workout SET name = :newName WHERE id = :id")
-    fun updateNameById(id: Long, newName: String)
+    fun updateNameById(id: Long, newName: String) : Completable
 
 //    fun save(workout: Workout) =
 //        if (workout.id == 0L) insert(workout) else updateNameById(workout.id, workout.name)

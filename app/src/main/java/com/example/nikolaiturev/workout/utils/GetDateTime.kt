@@ -1,4 +1,4 @@
-package com.example.nikolaiturev.workout.util
+package com.example.nikolaiturev.workout.utils
 
 import java.text.SimpleDateFormat
 import java.util.*

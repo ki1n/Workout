@@ -1,6 +1,5 @@
 package com.example.nikolaiturev.workout.presentation.workouts
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.nikolaiturev.workout.domain.entity.Workout
 import com.example.nikolaiturev.workout.domain.repository.WorkoutRepository
@@ -21,7 +20,6 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
                 .doFinally { isInProgress.value = true }
                 .subscribe({
                     workoutLiveData.value = it
-                    Log.d("Log", "$it")
                 }, {
                     postMessage(it.localizedMessage)
                 })
@@ -29,18 +27,31 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
     }
 
     fun update(workout: Workout) {
-        workoutRepository.update(workout)
-            .subscribe()
+        disposable {
+            workoutRepository.update(workout)
+                .subscribe()
+        }
     }
 
     fun delete(workout: Workout) {
-        workoutRepository.delete(workout)
-            .subscribe()
+        disposable {
+            workoutRepository.delete(workout)
+                .subscribe()
+        }
     }
 
-    fun insert(workout: Workout){
-        workoutRepository.insert(workout)
-            .subscribe()
+    fun insert(workout: Workout) {
+        disposable {
+            workoutRepository.insert(workout)
+                .subscribe()
+        }
+    }
+
+    fun updateNameById(id: Long, newName: String) {
+        disposable {
+            workoutRepository.updateNameById(id, newName)
+                .subscribe()
+        }
     }
 
 }

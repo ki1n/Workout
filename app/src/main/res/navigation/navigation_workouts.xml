@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_workouts"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_workouts"
     app:startDestination="@id/workoutsFragment">
 
     <fragment
         android:id="@+id/workoutsFragment"
         android:name="com.example.nikolaiturev.workout.presentation.workouts.WorkoutsFragment"
-        android:label="WorkoutsFragment" />
+        android:label="WorkoutsFragment">
+        <action
+            android:id="@+id/action_workoutsFragment_to_workoutAddDialog"
+            app:destination="@id/workoutAddDialog" />
+        <action
+            android:id="@+id/action_workoutsFragment_to_workoutEditDialog"
+            app:destination="@id/workoutEditDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/workoutAddDialog"
+        android:name="com.example.nikolaiturev.workout.presentation.workout_add.WorkoutAddDialog"
+        android:label="WorkoutAddDialog">
+
+    </dialog>
+    <dialog
+        android:id="@+id/workoutEditDialog"
+        android:name="com.example.nikolaiturev.workout.presentation.workout_edit.WorkoutEditDialog"
+        android:label="WorkoutEditDialog">
+
+        <argument
+            android:name="workout_id"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </dialog>
 </navigation>
