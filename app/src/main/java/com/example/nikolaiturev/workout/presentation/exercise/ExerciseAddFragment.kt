@@ -16,5 +16,8 @@ class ExerciseAddFragment : BaseFragment() {
             findNavController().navigate(R.id.action_exerciseAddFragment_to_workoutDetailsFragment)
         }
 
+
+
+
     }
 }

@@ -44,6 +44,10 @@
         <action
             android:id="@+id/action_workoutDetailsFragment_to_exerciseAddFragment"
             app:destination="@id/exerciseAddFragment" />
+        <argument
+            android:name="workout_id_details"
+            app:argType="long"
+            android:defaultValue="-1L" />
     </fragment>
     <fragment
         android:id="@+id/exerciseAddFragment"

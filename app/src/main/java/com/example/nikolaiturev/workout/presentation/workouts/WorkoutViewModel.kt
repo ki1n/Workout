@@ -10,10 +10,10 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
     val workoutLiveData = MutableLiveData<List<Workout>>()
 
     init {
-        getWorkout()
+        getAllWorkout()
     }
 
-    private fun getWorkout() {
+    private fun getAllWorkout() {
         disposable {
             workoutRepository.getAllWorkout()
                 .doOnSubscribe { isInProgress.value = false }
@@ -29,28 +29,36 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
     fun update(workout: Workout) {
         disposable {
             workoutRepository.update(workout)
-                .subscribe()
+                .subscribe({}, {
+                    postMessage(it.localizedMessage)
+                })
         }
     }
 
     fun delete(workout: Workout) {
         disposable {
             workoutRepository.delete(workout)
-                .subscribe()
+                .subscribe({}, {
+                    postMessage(it.localizedMessage)
+                })
         }
     }
 
     fun insert(workout: Workout) {
         disposable {
             workoutRepository.insert(workout)
-                .subscribe()
+                .subscribe({}, {
+                    postMessage(it.localizedMessage)
+                })
         }
     }
 
     fun updateNameById(id: Long, newName: String) {
         disposable {
             workoutRepository.updateNameById(id, newName)
-                .subscribe()
+                .subscribe({}, {
+                    postMessage(it.localizedMessage)
+                })
         }
     }
 

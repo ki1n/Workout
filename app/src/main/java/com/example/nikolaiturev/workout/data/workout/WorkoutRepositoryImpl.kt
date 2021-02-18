@@ -5,6 +5,7 @@ import com.example.nikolaiturev.workout.domain.entity.Workout
 import com.example.nikolaiturev.workout.domain.repository.WorkoutRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -27,6 +28,11 @@ class WorkoutRepositoryImpl(private val workoutDao: WorkoutDao) : WorkoutReposit
 
     override fun update(workout: Workout): Completable =
         workoutDao.update(workout)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
+    override fun getWorkoutById(id: Long): Single<Workout> =
+        workoutDao.getWorkoutById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 

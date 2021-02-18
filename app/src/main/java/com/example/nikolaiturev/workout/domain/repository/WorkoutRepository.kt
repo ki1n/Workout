@@ -3,6 +3,7 @@ package com.example.nikolaiturev.workout.domain.repository
 import com.example.nikolaiturev.workout.domain.entity.Workout
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 interface WorkoutRepository {
 
@@ -14,7 +15,7 @@ interface WorkoutRepository {
 
     fun update(workout: Workout): Completable
 
-
+    fun getWorkoutById(id: Long): Single<Workout>
 
     fun updateNameById(id: Long, newName: String): Completable
 }

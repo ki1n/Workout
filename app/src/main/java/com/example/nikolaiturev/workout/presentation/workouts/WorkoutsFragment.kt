@@ -34,7 +34,9 @@ class WorkoutsFragment : BaseFragment() {
         rvWorkouts.layoutManager = LinearLayoutManager(requireContext())
 
         workoutsAdapter.onClickListener = { workout ->
-            findNavController().navigate(R.id.action_workoutsFragment_to_workoutDetailsFragment)
+            val action =
+                WorkoutsFragmentDirections.actionWorkoutsFragmentToWorkoutDetailsFragment(workout.id)
+            findNavController().navigate(action)
         }
 
         workoutsAdapter.onEditClickListener = { workout ->

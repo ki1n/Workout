@@ -16,7 +16,7 @@ interface WorkoutDao {
     fun getWorkouts(): Flowable<List<Workout>>
 
     @Query("SELECT * FROM Workout WHERE id = :id")
-    fun getWorkout(id: Long): Single<Workout>
+    fun getWorkoutById(id: Long): Single<Workout>
 
     @Query("DELETE FROM Workout WHERE id = :id")
     fun deleteById(id: Long)
