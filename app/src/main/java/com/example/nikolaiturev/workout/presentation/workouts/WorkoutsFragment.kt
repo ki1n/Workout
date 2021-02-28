@@ -9,11 +9,12 @@ import com.example.nikolaiturev.workout.presentation.workouts.adapter.WorkoutsAd
 import kotlinx.android.synthetic.main.app_bar_workouts.*
 import kotlinx.android.synthetic.main.fragment_workouts.*
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WorkoutsFragment : BaseFragment() {
     override var layoutId: Int = R.layout.fragment_workouts
 
-    override val viewModel by inject<WorkoutViewModel>()
+    override val viewModel by viewModel<WorkoutViewModel>()
 
     private val workoutsAdapter: WorkoutsAdapter by inject()
 
@@ -34,9 +35,11 @@ class WorkoutsFragment : BaseFragment() {
         rvWorkouts.layoutManager = LinearLayoutManager(requireContext())
 
         workoutsAdapter.onClickListener = { workout ->
-            val action =
-                WorkoutsFragmentDirections.actionWorkoutsFragmentToWorkoutDetailsFragment(workout.id)
-            findNavController().navigate(action)
+            findNavController()
+                .navigate(
+                    WorkoutsFragmentDirections
+                        .actionWorkoutsFragmentToWorkoutDetailsFragment(workout.id)
+                )
         }
 
         workoutsAdapter.onEditClickListener = { workout ->
