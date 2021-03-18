@@ -8,15 +8,15 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity
 @Parcelize
-data class Workout(
+data class Exercise(
 
     @PrimaryKey(autoGenerate = true)
     var id: Long,
 
-    @ColumnInfo(name = "name")
-    var nameWorkout: String,
+    @ColumnInfo(name = "nameExercise")
+    var nameExercise: String,
 
-    @ColumnInfo(name = "date")
-    var date: String
+    @ColumnInfo(name = "workoutId")
+    var workoutId : Long
 
 ) : Parcelable

@@ -16,18 +16,18 @@ class WorkoutRepositoryImpl(private val workoutDao: WorkoutDao) : WorkoutReposit
             .observeOn(AndroidSchedulers.mainThread())
 
     override fun insert(workout: Workout): Completable =
-        workoutDao.insert(workout)
+        workoutDao.insertWorkout(workout)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
     override fun delete(workout: Workout): Completable =
-        workoutDao.delete(workout)
+        workoutDao.deleteWorkout(workout)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
 
     override fun update(workout: Workout): Completable =
-        workoutDao.update(workout)
+        workoutDao.updateWorkout(workout)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
@@ -40,6 +40,5 @@ class WorkoutRepositoryImpl(private val workoutDao: WorkoutDao) : WorkoutReposit
         workoutDao.updateNameById(id, newName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-
 
 }

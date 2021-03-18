@@ -1,7 +1,6 @@
 package com.example.nikolaiturev.workout.presentation.workouts
 
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolaiturev.workout.R
 import com.example.nikolaiturev.workout.exstension.setOnDebouncedClickListener
 import com.example.nikolaiturev.workout.presentation.base.BaseFragment
@@ -12,6 +11,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WorkoutsFragment : BaseFragment() {
+
     override var layoutId: Int = R.layout.fragment_workouts
 
     override val viewModel by viewModel<WorkoutViewModel>()
@@ -19,6 +19,7 @@ class WorkoutsFragment : BaseFragment() {
     private val workoutsAdapter: WorkoutsAdapter by inject()
 
     override fun initView() {
+        baseSubscribe(viewModel)
         initAdapter()
 
         viewModel.workoutLiveData.observe(viewLifecycleOwner, { list ->
@@ -32,25 +33,24 @@ class WorkoutsFragment : BaseFragment() {
 
     private fun initAdapter() {
         rvWorkouts.adapter = workoutsAdapter
-        rvWorkouts.layoutManager = LinearLayoutManager(requireContext())
 
         workoutsAdapter.onClickListener = { workout ->
             findNavController()
                 .navigate(
-                    WorkoutsFragmentDirections
-                        .actionWorkoutsFragmentToWorkoutDetailsFragment(workout.id)
+                    WorkoutsFragmentDirections.actionWorkoutsFragmentToWorkoutDetailsFragment(
+                        workout.id
+                    )
                 )
         }
 
         workoutsAdapter.onEditClickListener = { workout ->
-            val action =
+            findNavController().navigate(
                 WorkoutsFragmentDirections.actionWorkoutsFragmentToWorkoutEditDialog(workout.id)
-            findNavController().navigate(action)
+            )
         }
 
         workoutsAdapter.onDeleteClickListener = { workout ->
             viewModel.delete(workout)
         }
     }
-
 }

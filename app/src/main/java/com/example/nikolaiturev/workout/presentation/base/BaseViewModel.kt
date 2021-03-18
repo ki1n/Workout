@@ -8,7 +8,7 @@ import io.reactivex.disposables.Disposable
 
 abstract class BaseViewModel : ViewModel() {
 
-    private val disposable = CompositeDisposable()
+    protected val disposable = CompositeDisposable()
 
     val message: MutableLiveData<BaseMessage> = SingleLiveEvent()
     val isInProgress = MutableLiveData<Boolean>()
@@ -53,5 +53,4 @@ abstract class BaseViewModel : ViewModel() {
             }
         }
     }
-
 }

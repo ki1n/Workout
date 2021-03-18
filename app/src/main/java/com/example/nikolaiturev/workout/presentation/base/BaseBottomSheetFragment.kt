@@ -22,5 +22,4 @@ abstract class BaseBottomSheetFragment: BottomSheetDialogFragment() {
         initView()
 
     }
-
 }

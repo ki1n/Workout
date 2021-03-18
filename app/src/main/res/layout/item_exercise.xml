@@ -2,7 +2,7 @@
 
 <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipe_layout"
+    android:id="@+id/swipe_layout_exercise"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
@@ -17,7 +17,7 @@
         android:background="@color/fon">
 
         <ImageView
-            android:id="@+id/image_edit"
+            android:id="@+id/image_edit_exercise"
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_marginStart="16dp"
@@ -30,16 +30,16 @@
             tools:ignore="VectorDrawableCompat" />
 
         <ImageView
-            android:id="@+id/image_delete"
+            android:id="@+id/image_delete_exercise"
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/image_edit"
+            app:layout_constraintBottom_toBottomOf="@+id/image_edit_exercise"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/image_edit"
-            app:layout_constraintTop_toTopOf="@+id/image_edit"
+            app:layout_constraintStart_toEndOf="@+id/image_edit_exercise"
+            app:layout_constraintTop_toTopOf="@+id/image_edit_exercise"
             app:srcCompat="@drawable/ic_delete_red_24"
             tools:ignore="VectorDrawableCompat" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -47,16 +47,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:background="@drawable/item_background_workout">
 
         <TextView
-            android:id="@+id/txtIdWorkout"
+            android:id="@+id/tvIdExercise"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/item_view_id_workout_adapter"
             android:foregroundGravity="center"
             android:gravity="center"
@@ -79,20 +78,20 @@
             android:textColor="@color/teal_700"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tvApproaches"
+            app:layout_constraintBottom_toTopOf="@+id/tvExercise"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txtIdWorkout"
-            app:layout_constraintTop_toTopOf="@+id/txtIdWorkout"
+            app:layout_constraintStart_toEndOf="@+id/tvIdExercise"
+            app:layout_constraintTop_toTopOf="@+id/tvIdExercise"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/tvApproaches"
+            android:id="@+id/tvExercise"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:text="@string/подходы"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/txtIdWorkout"
+            app:layout_constraintBottom_toBottomOf="@+id/tvIdExercise"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvNameExercise"
             app:layout_constraintTop_toBottomOf="@+id/tvNameExercise" />

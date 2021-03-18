@@ -19,13 +19,13 @@ class WorkoutAddDialog : BaseBottomSheetFragment() {
     override fun initView() {
         btSaveAddExercise.setOnDebouncedClickListener {
             if (inputCheckEditText(etNameAddWorkout.text.toString())) {
+                // не надо создавать тренировку
                 val workout = Workout(0, etNameAddWorkout.text.toString(), getDateTime())
                 viewModel.insert(workout)
                 dismiss()
             }
         }
     }
-
 }
 
 

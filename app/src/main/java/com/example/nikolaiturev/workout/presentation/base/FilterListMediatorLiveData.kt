@@ -8,9 +8,9 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class FilterListMediatorLiveData<F, T>(
-        private val dataLiveData: LiveData<List<T>>,
-        private val filterLiveData: LiveData<F>,
-        private val filter: (T, F?) -> Boolean
+    private val dataLiveData: LiveData<List<T>>,
+    private val filterLiveData: LiveData<F>,
+    private val filter: (T, F?) -> Boolean
 ) : MediatorLiveData<List<T>>() {
     private var disposable: Disposable? = null
 

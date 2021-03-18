@@ -7,6 +7,6 @@ class WorkoutActivity : BaseActivity() {
     override var layoutId: Int = R.layout.activity_workout
 
     override fun iniView() {
-
+        // ignore
     }
 }

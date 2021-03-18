@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import com.example.nikolaiturev.workout.domain.entity.Workout
 import com.example.nikolaiturev.workout.domain.repository.WorkoutRepository
 import com.example.nikolaiturev.workout.presentation.base.BaseViewModel
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.subscribeBy
 
 class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseViewModel() {
 
@@ -14,52 +16,56 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
     }
 
     private fun getAllWorkout() {
-        disposable {
-            workoutRepository.getAllWorkout()
-                .doOnSubscribe { isInProgress.value = false }
-                .doFinally { isInProgress.value = true }
-                .subscribe({
-                    workoutLiveData.value = it
-                }, {
-                    postMessage(it.localizedMessage)
-                })
-        }
+        workoutRepository.getAllWorkout()
+            .doOnSubscribe { isInProgress.value = false }
+            .doFinally { isInProgress.value = true }
+            .subscribeBy(
+                onNext = { workoutLiveData.value = it },
+                onError = { it.localizedMessage }
+            ).addTo(disposable)
     }
 
     fun update(workout: Workout) {
-        disposable {
-            workoutRepository.update(workout)
-                .subscribe({}, {
+        workoutRepository.update(workout)
+            .subscribeBy(
+                onComplete = {
+                    // ignore
+                },
+                onError = {
                     postMessage(it.localizedMessage)
-                })
-        }
+                }
+            )
+            .addTo(disposable)
     }
 
     fun delete(workout: Workout) {
-        disposable {
-            workoutRepository.delete(workout)
-                .subscribe({}, {
+        workoutRepository.delete(workout)
+            .subscribeBy(
+                onComplete = {
+                    // ignore
+                },
+                onError = {
                     postMessage(it.localizedMessage)
-                })
-        }
+                }).addTo(disposable)
     }
+
 
     fun insert(workout: Workout) {
-        disposable {
-            workoutRepository.insert(workout)
-                .subscribe({}, {
+        workoutRepository.insert(workout)
+            .subscribeBy(
+                onError = {
                     postMessage(it.localizedMessage)
-                })
-        }
+                }).addTo(disposable)
     }
+
 
     fun updateNameById(id: Long, newName: String) {
-        disposable {
-            workoutRepository.updateNameById(id, newName)
-                .subscribe({}, {
-                    postMessage(it.localizedMessage)
-                })
-        }
-    }
 
+        workoutRepository.updateNameById(id, newName)
+            .subscribeBy(
+                onError = {
+                    postMessage(it.localizedMessage)
+                }).addTo(disposable)
+    }
 }
+

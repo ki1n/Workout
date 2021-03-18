@@ -15,9 +15,5 @@ class ExerciseAddFragment : BaseFragment() {
         app_bar_back_in_workoutDetails.setOnDebouncedClickListener {
             findNavController().navigate(R.id.action_exerciseAddFragment_to_workoutDetailsFragment)
         }
-
-
-
-
     }
 }
