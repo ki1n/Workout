@@ -18,20 +18,26 @@ class WorkoutDetailsFragment : BaseFragment() {
     private val args: WorkoutDetailsFragmentArgs by navArgs()
 
     override val viewModel by viewModel<WorkoutDetailsViewModel>()
-    private val  workoutDetailsAdapter: WorkoutDetailsAdapter by inject()
+    private val workoutDetailsAdapter: WorkoutDetailsAdapter by inject()
 
     override fun initView() {
         bindViewModel()
         initAdapter()
         // посмотри как получать аргементы во viewmodel
         viewModel.getWorkoutById(args.workoutIdDetails)
+        viewModel.getWorkoutWithExercise(args.workoutIdDetails)
 
         app_bar_back_in_workouts.setOnDebouncedClickListener {
             findNavController().navigate(R.id.action_workoutDetailsFragment_to_workoutsFragment)
         }
 
         app_bar_add_exercise.setOnDebouncedClickListener {
-            findNavController().navigate(R.id.action_workoutDetailsFragment_to_exerciseAddFragment)
+            findNavController().navigate(
+                WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToExerciseAddFragment(
+                    args.workoutIdDetails
+                )
+            )
+            //      findNavController().navigate(R.id.action_workoutDetailsFragment_to_exerciseAddFragment)
         }
     }
 
@@ -39,15 +45,13 @@ class WorkoutDetailsFragment : BaseFragment() {
         rvExercises.adapter = workoutDetailsAdapter
     }
 
-    private fun bindViewModel(){
+    private fun bindViewModel() {
         viewModel.workoutLiveData.observe(viewLifecycleOwner, { workout ->
             tvNameWorkout.text = workout.nameWorkout
         })
 
-        viewModel.exercisesLiveData.observe(viewLifecycleOwner,{
+        viewModel.exercisesLiveData.observe(viewLifecycleOwner, {
             workoutDetailsAdapter.submitList(it)
         })
     }
-
-
 }

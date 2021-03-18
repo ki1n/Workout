@@ -24,15 +24,15 @@ class WorkoutDetailsAdapter :
             bind(currentExercise)
 
             itemView.setOnDebouncedClickListener {
-                onClickListener(currentExercise)
+                onClickListener.invoke(currentExercise)
             }
 
-            itemView.setOnDebouncedClickListener {
-                onEditClickListener(currentExercise)
+            imageEditExercise.setOnDebouncedClickListener {
+                onEditClickListener.invoke(currentExercise)
             }
 
-            itemView.setOnDebouncedClickListener {
-                onDeleteClickListener(currentExercise)
+            imageDeleteExercise.setOnDebouncedClickListener {
+                onDeleteClickListener.invoke(currentExercise)
             }
 
         }

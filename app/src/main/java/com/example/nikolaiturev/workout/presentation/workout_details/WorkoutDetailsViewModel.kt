@@ -18,6 +18,7 @@ class WorkoutDetailsViewModel(
     val exercisesLiveData = MutableLiveData<List<Exercise>>()
 
     fun getWorkoutWithExercise(id: Long) {
+
         exerciseRepository.getWorkoutWithExercise(id)
             .subscribeBy(
                 onSuccess = {
