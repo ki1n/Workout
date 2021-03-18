@@ -17,6 +17,7 @@ class WorkoutAddDialog : BaseBottomSheetFragment() {
     override var layoutId: Int = R.layout.fragment_workout_add_bottom_sheet
 
     override fun initView() {
+
         btSaveAddExercise.setOnDebouncedClickListener {
             if (inputCheckEditText(etNameAddWorkout.text.toString())) {
                 // не надо создавать тренировку

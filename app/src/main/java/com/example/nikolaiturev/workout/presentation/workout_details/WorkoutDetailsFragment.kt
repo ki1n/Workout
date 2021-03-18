@@ -21,6 +21,7 @@ class WorkoutDetailsFragment : BaseFragment() {
     private val workoutDetailsAdapter: WorkoutDetailsAdapter by inject()
 
     override fun initView() {
+        baseSubscribe(viewModel)
         bindViewModel()
         initAdapter()
         // посмотри как получать аргементы во viewmodel
@@ -28,7 +29,7 @@ class WorkoutDetailsFragment : BaseFragment() {
         viewModel.getWorkoutWithExercise(args.workoutIdDetails)
 
         app_bar_back_in_workouts.setOnDebouncedClickListener {
-            findNavController().navigate(R.id.action_workoutDetailsFragment_to_workoutsFragment)
+            findNavController().navigateUp()
         }
 
         app_bar_add_exercise.setOnDebouncedClickListener {
@@ -37,7 +38,6 @@ class WorkoutDetailsFragment : BaseFragment() {
                     args.workoutIdDetails
                 )
             )
-            //      findNavController().navigate(R.id.action_workoutDetailsFragment_to_exerciseAddFragment)
         }
     }
 

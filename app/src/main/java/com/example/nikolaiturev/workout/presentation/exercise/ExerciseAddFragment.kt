@@ -20,9 +20,10 @@ class ExerciseAddFragment : BaseFragment() {
     private val args: ExerciseAddFragmentArgs by navArgs()
 
     override fun initView() {
+        baseSubscribe(viewModel)
 
         app_bar_back_in_workoutDetails.setOnDebouncedClickListener {
-            findNavController().navigate(R.id.action_exerciseAddFragment_to_workoutDetailsFragment)
+            findNavController().navigateUp()
         }
 
         btSaveAddExercise.setOnDebouncedClickListener {
@@ -31,6 +32,7 @@ class ExerciseAddFragment : BaseFragment() {
                 val exercise =
                     Exercise(0, etNameAddExercise.text.toString(), args.workoutIdExerciseAdd)
                 viewModel.insert(exercise)
+                findNavController().navigateUp()
             }
         }
     }

@@ -31,8 +31,6 @@ class WorkoutDetailsViewModel(
     fun getWorkoutById(id: Long) {
 
         workoutRepository.getWorkoutById(id)
-            .doOnSubscribe { isInProgress.value = true }
-            .doFinally { isInProgress.value = false }
             .subscribeBy(
                 onSuccess = {
                     workoutLiveData.value = it

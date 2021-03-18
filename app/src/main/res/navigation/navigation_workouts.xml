@@ -38,9 +38,7 @@
         android:id="@+id/workoutDetailsFragment"
         android:name="com.example.nikolaiturev.workout.presentation.workout_details.WorkoutDetailsFragment"
         android:label="WorkoutDetailsFragment">
-        <action
-            android:id="@+id/action_workoutDetailsFragment_to_workoutsFragment"
-            app:destination="@id/workoutsFragment" />
+
         <action
             android:id="@+id/action_workoutDetailsFragment_to_exerciseAddFragment"
             app:destination="@id/exerciseAddFragment" />
@@ -53,9 +51,7 @@
         android:id="@+id/exerciseAddFragment"
         android:name="com.example.nikolaiturev.workout.presentation.exercise.ExerciseAddFragment"
         android:label="ExerciseAddFragment">
-        <action
-            android:id="@+id/action_exerciseAddFragment_to_workoutDetailsFragment"
-            app:destination="@id/workoutDetailsFragment" />
+
         <argument
             android:name="workout_id_exercise_add"
             android:defaultValue="-1L"
