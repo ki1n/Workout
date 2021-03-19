@@ -18,6 +18,4 @@ class ExerciseAddFragmentViewModel(
                 }
             ).addTo(disposable)
     }
-
-
 }

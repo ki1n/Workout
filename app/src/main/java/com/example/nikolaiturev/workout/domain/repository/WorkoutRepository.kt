@@ -17,6 +17,6 @@ interface WorkoutRepository {
 
     fun getWorkoutById(id: Long): Single<Workout>
 
-    fun updateNameById(id: Long, newName: String): Completable
+    fun updateWorkoutNameById(id: Long, newName: String): Completable
 
 }

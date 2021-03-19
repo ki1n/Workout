@@ -15,7 +15,7 @@ interface WorkoutDao {
     fun getAllLiveDate(): LiveData<List<Workout>>
 
     @Query("SELECT id, name FROM WORKOUT WHERE id = :id")
-    fun getWorkoutWithExercise(id: Long): Single<WorkoutWithExercise>
+    fun getWorkoutWithExercise(id: Long): Flowable<WorkoutWithExercise>
 
     @Query("SELECT * FROM Workout ORDER BY id")
     fun getWorkouts(): Flowable<List<Workout>>
@@ -27,7 +27,10 @@ interface WorkoutDao {
     fun deleteById(id: Long)
 
     @Query("UPDATE Workout SET name = :newName WHERE id = :id")
-    fun updateNameById(id: Long, newName: String): Completable
+    fun updateWorkoutNameById(id: Long, newName: String): Completable
+
+    @Query("UPDATE Exercise SET nameExercise = :newName WHERE id = :id")
+    fun updateExerciseNameById(id: Long, newName: String): Completable
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertWorkout(workout: Workout): Completable

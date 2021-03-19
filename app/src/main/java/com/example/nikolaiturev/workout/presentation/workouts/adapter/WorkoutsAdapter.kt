@@ -7,7 +7,7 @@ import com.example.nikolaiturev.workout.domain.entity.Workout
 import com.example.nikolaiturev.workout.exstension.inflate
 import com.example.nikolaiturev.workout.exstension.setOnDebouncedClickListener
 
-class WorkoutsAdapter : ListAdapter<Workout, WorkoutsViewHolder>(WorkoutDiffCallback()) {
+class WorkoutsAdapter : ListAdapter<Workout, WorkoutsViewHolder>(WorkoutsDiffCallback()) {
 
     lateinit var onClickListener: ((Workout) -> Unit)
     lateinit var onEditClickListener: ((Workout) -> Unit)
@@ -19,7 +19,9 @@ class WorkoutsAdapter : ListAdapter<Workout, WorkoutsViewHolder>(WorkoutDiffCall
 
     override fun onBindViewHolder(holder: WorkoutsViewHolder, position: Int) {
         val currentWorkout = currentList[position]
+
         with(holder) {
+            positionWorkout.text = (position + 1).toString()
             bind(currentWorkout)
 
             itemView.setOnDebouncedClickListener {
@@ -33,7 +35,6 @@ class WorkoutsAdapter : ListAdapter<Workout, WorkoutsViewHolder>(WorkoutDiffCall
             imageDeleteWorkout.setOnDebouncedClickListener {
                 onDeleteClickListener.invoke(currentWorkout)
             }
-
         }
     }
 }

@@ -5,7 +5,7 @@ import com.example.nikolaiturev.workout.domain.entity.Exercise
 import com.example.nikolaiturev.workout.domain.entity.WorkoutWithExercise
 import com.example.nikolaiturev.workout.domain.repository.ExerciseRepository
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -25,8 +25,13 @@ class ExerciseRepositoryImpl(private val workoutDao: WorkoutDao) : ExerciseRepos
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    override fun getWorkoutWithExercise(id: Long): Single<WorkoutWithExercise> =
+    override fun getWorkoutWithExercise(id: Long): Flowable<WorkoutWithExercise> =
         workoutDao.getWorkoutWithExercise(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
+    override fun updateExerciseNameById(id: Long, newName: String): Completable =
+        workoutDao.updateExerciseNameById(id, newName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 

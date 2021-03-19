@@ -18,7 +18,6 @@ class WorkoutApp : Application() {
                 listOf(
                     repositoryModule,
                     viewModelModule,
-                    mapperModule,
                     adapterModule,
                     databaseModule
                 )

@@ -1,4 +1,4 @@
-package com.example.nikolaiturev.workout.presentation.workout
+package com.example.nikolaiturev.workout.presentation.workout_activity
 
 import com.example.nikolaiturev.workout.R
 import com.example.nikolaiturev.workout.presentation.base.BaseActivity

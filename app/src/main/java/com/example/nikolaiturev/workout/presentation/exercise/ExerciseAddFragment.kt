@@ -8,14 +8,14 @@ import com.example.nikolaiturev.workout.exstension.setOnDebouncedClickListener
 import com.example.nikolaiturev.workout.presentation.base.BaseFragment
 import com.example.nikolaiturev.workout.utils.inputCheckEditText
 import kotlinx.android.synthetic.main.app_bar_exercise_add.*
-import kotlinx.android.synthetic.main.fragment_add_exercise.*
-import org.koin.android.ext.android.inject
+import kotlinx.android.synthetic.main.fragment_details_workout.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ExerciseAddFragment : BaseFragment() {
 
-    override var layoutId: Int = R.layout.fragment_add_exercise
+    override var layoutId: Int = R.layout.fragment_details_workout
 
-    override val viewModel by inject<ExerciseAddFragmentViewModel>()
+    override val viewModel by viewModel<ExerciseAddFragmentViewModel>()
 
     private val args: ExerciseAddFragmentArgs by navArgs()
 
@@ -28,7 +28,6 @@ class ExerciseAddFragment : BaseFragment() {
 
         btSaveAddExercise.setOnDebouncedClickListener {
             if (inputCheckEditText(etNameAddExercise.text.toString())) {
-
                 val exercise =
                     Exercise(0, etNameAddExercise.text.toString(), args.workoutIdExerciseAdd)
                 viewModel.insert(exercise)

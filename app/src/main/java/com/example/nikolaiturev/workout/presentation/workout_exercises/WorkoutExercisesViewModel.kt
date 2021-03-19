@@ -1,4 +1,4 @@
-package com.example.nikolaiturev.workout.presentation.workout_details
+package com.example.nikolaiturev.workout.presentation.workout_exercises
 
 import androidx.lifecycle.MutableLiveData
 import com.example.nikolaiturev.workout.domain.entity.Exercise
@@ -9,9 +9,9 @@ import com.example.nikolaiturev.workout.presentation.base.BaseViewModel
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
-class WorkoutDetailsViewModel(
+class WorkoutExercisesViewModel(
     private val workoutRepository: WorkoutRepository,
-    private val exerciseRepository: ExerciseRepository
+    private val exerciseRepository: ExerciseRepository,
 ) : BaseViewModel() {
 
     val workoutLiveData = MutableLiveData<Workout>()
@@ -21,7 +21,7 @@ class WorkoutDetailsViewModel(
 
         exerciseRepository.getWorkoutWithExercise(id)
             .subscribeBy(
-                onSuccess = {
+                onNext = {
                     exercisesLiveData.value = it.exercises
                 },
                 onError = { postMessage(it.localizedMessage) }
@@ -40,4 +40,20 @@ class WorkoutDetailsViewModel(
                 }
             ).addTo(disposable)
     }
+
+    fun delete(exercise: Exercise) {
+
+        exerciseRepository.delete(exercise)
+            .subscribeBy(
+                onError = { postMessage(it.localizedMessage) }
+            ).addTo(disposable)
+    }
+
+    fun updateExerciseNameById(id: Long, name: String) {
+        exerciseRepository.updateExerciseNameById(id, name)
+            .subscribeBy(
+                onError = { postMessage(it.localizedMessage) }
+            ).addTo(disposable)
+    }
+
 }

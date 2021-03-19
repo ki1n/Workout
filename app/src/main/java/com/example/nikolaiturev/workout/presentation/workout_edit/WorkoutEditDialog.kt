@@ -7,23 +7,30 @@ import com.example.nikolaiturev.workout.presentation.base.BaseBottomSheetFragmen
 import com.example.nikolaiturev.workout.presentation.workouts.WorkoutViewModel
 import com.example.nikolaiturev.workout.utils.inputCheckEditText
 import kotlinx.android.synthetic.main.fragment_workout_edit_bottom_sheet.*
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WorkoutEditDialog : BaseBottomSheetFragment() {
+
     override var layoutId: Int = R.layout.fragment_workout_edit_bottom_sheet
 
     private val args: WorkoutEditDialogArgs by navArgs()
 
-    private val viewModel by inject<WorkoutViewModel>()
+    private val viewModel by viewModel<WorkoutViewModel>()
+
+    override fun getTheme(): Int = R.style.Theme_FullScreenDialog
 
     override fun initView() {
 
         btSaveEditWorkout.setOnDebouncedClickListener {
             if (inputCheckEditText(etNameEditWorkout.text.toString())) {
-                viewModel.updateNameById(args.workoutId, newName = etNameEditWorkout.text.toString())
+                viewModel.updateWorkoutNameById(
+                    args.workoutId,
+                    newName = etNameEditWorkout.text.toString()
+                )
                 dismiss()
             }
         }
+
     }
 }
 

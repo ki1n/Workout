@@ -36,7 +36,7 @@
     </dialog>
     <fragment
         android:id="@+id/workoutDetailsFragment"
-        android:name="com.example.nikolaiturev.workout.presentation.workout_details.WorkoutDetailsFragment"
+        android:name="com.example.nikolaiturev.workout.presentation.workout_exercises.WorkoutExercisesFragment"
         android:label="WorkoutDetailsFragment">
 
         <action
@@ -46,6 +46,9 @@
             android:name="workout_id_details"
             android:defaultValue="-1L"
             app:argType="long" />
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_exerciseEditDialog"
+            app:destination="@id/exerciseEditDialog" />
     </fragment>
     <fragment
         android:id="@+id/exerciseAddFragment"
@@ -57,5 +60,14 @@
             android:defaultValue="-1L"
             app:argType="long" />
     </fragment>
+    <dialog
+        android:id="@+id/exerciseEditDialog"
+        android:name="com.example.nikolaiturev.workout.presentation.exercise_edit.ExerciseEditDialog"
+        android:label="ExerciseEditDialog">
+        <argument
+            android:name="exerciseId"
+            android:defaultValue="-1L"
+            app:argType="long" />
+    </dialog>
 
 </navigation>

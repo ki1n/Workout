@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#808080</color>
     <color name="fon">#E8E6E6</color>
+    <color name="colorButtonDialog">#5B71ED</color>
 
 </resources>

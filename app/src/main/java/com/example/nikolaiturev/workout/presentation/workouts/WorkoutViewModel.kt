@@ -7,7 +7,9 @@ import com.example.nikolaiturev.workout.presentation.base.BaseViewModel
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
-class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseViewModel() {
+class WorkoutViewModel(
+    private val workoutRepository: WorkoutRepository
+) : BaseViewModel() {
 
     val workoutLiveData = MutableLiveData<List<Workout>>()
 
@@ -28,9 +30,6 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
     fun update(workout: Workout) {
         workoutRepository.update(workout)
             .subscribeBy(
-                onComplete = {
-                    // ignore
-                },
                 onError = {
                     postMessage(it.localizedMessage)
                 }
@@ -41,9 +40,6 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
     fun delete(workout: Workout) {
         workoutRepository.delete(workout)
             .subscribeBy(
-                onComplete = {
-                    // ignore
-                },
                 onError = {
                     postMessage(it.localizedMessage)
                 }).addTo(disposable)
@@ -59,9 +55,9 @@ class WorkoutViewModel(private val workoutRepository: WorkoutRepository) : BaseV
     }
 
 
-    fun updateNameById(id: Long, newName: String) {
+    fun updateWorkoutNameById(id: Long, newName: String) {
 
-        workoutRepository.updateNameById(id, newName)
+        workoutRepository.updateWorkoutNameById(id, newName)
             .subscribeBy(
                 onError = {
                     postMessage(it.localizedMessage)

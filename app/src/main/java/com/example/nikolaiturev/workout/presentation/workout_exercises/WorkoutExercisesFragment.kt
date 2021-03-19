@@ -1,30 +1,30 @@
-package com.example.nikolaiturev.workout.presentation.workout_details
+package com.example.nikolaiturev.workout.presentation.workout_exercises
 
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.nikolaiturev.workout.R
 import com.example.nikolaiturev.workout.exstension.setOnDebouncedClickListener
 import com.example.nikolaiturev.workout.presentation.base.BaseFragment
-import com.example.nikolaiturev.workout.presentation.workout_details.adapter.WorkoutDetailsAdapter
+import com.example.nikolaiturev.workout.presentation.workout_exercises.adapter.WorkoutExercisesAdapter
 import kotlinx.android.synthetic.main.app_bar_workout_details.*
-import kotlinx.android.synthetic.main.fragment_details_workout.*
+import kotlinx.android.synthetic.main.fragment_workout_exercises.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class WorkoutDetailsFragment : BaseFragment() {
+class WorkoutExercisesFragment : BaseFragment() {
 
-    override var layoutId: Int = R.layout.fragment_details_workout
+    override var layoutId: Int = R.layout.fragment_workout_exercises
 
-    private val args: WorkoutDetailsFragmentArgs by navArgs()
+    private val args: WorkoutExercisesFragmentArgs by navArgs()
 
-    override val viewModel by viewModel<WorkoutDetailsViewModel>()
-    private val workoutDetailsAdapter: WorkoutDetailsAdapter by inject()
+    override val viewModel by viewModel<WorkoutExercisesViewModel>()
+
+    private val workoutExercisesAdapter: WorkoutExercisesAdapter by inject()
 
     override fun initView() {
         baseSubscribe(viewModel)
         bindViewModel()
         initAdapter()
-        // посмотри как получать аргементы во viewmodel
         viewModel.getWorkoutById(args.workoutIdDetails)
         viewModel.getWorkoutWithExercise(args.workoutIdDetails)
 
@@ -34,7 +34,7 @@ class WorkoutDetailsFragment : BaseFragment() {
 
         app_bar_add_exercise.setOnDebouncedClickListener {
             findNavController().navigate(
-                WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToExerciseAddFragment(
+                WorkoutExercisesFragmentDirections.actionWorkoutDetailsFragmentToExerciseAddFragment(
                     args.workoutIdDetails
                 )
             )
@@ -42,7 +42,19 @@ class WorkoutDetailsFragment : BaseFragment() {
     }
 
     private fun initAdapter() {
-        rvExercises.adapter = workoutDetailsAdapter
+        rvExercises.adapter = workoutExercisesAdapter
+
+        workoutExercisesAdapter.onDeleteClickListener = { exercise ->
+            viewModel.delete(exercise)
+        }
+
+        workoutExercisesAdapter.onEditClickListener = { exercise ->
+            findNavController().navigate(
+                WorkoutExercisesFragmentDirections.actionWorkoutDetailsFragmentToExerciseEditDialog(
+                    exercise.id
+                )
+            )
+        }
     }
 
     private fun bindViewModel() {
@@ -51,7 +63,7 @@ class WorkoutDetailsFragment : BaseFragment() {
         })
 
         viewModel.exercisesLiveData.observe(viewLifecycleOwner, {
-            workoutDetailsAdapter.submitList(it)
+            workoutExercisesAdapter.submitList(it)
         })
     }
 }
